@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "image": "/images/salad.png",
+        "description": "salad"
+    },
+    {
+        "id": 2,
+        "image": "/images/Spices.png",
+        "description": "Indian"
+    },
+    {
+        "id": 3,
+        "image": "/images/Panner.png",
+        "description": "Panner"
+    },
+    {
+        "id": 4,
+        "image": "/images/Pasta.png",
+        "description": "Pasta"
+    }
+]

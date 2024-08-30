@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    box-sizing: border-box;
+}
+
+.filterBtn {
+    @apply border border-gray-300 py-1 px-2 rounded-full shadow-sm flex items-center;
+}
+
+.active {
+    @apply bg-gray-100 border-gray-300;
+}
+
+.active .close-icon {
+    @apply block;
+}
+
+ .loader {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: inline-block;
+    border-top: 3px solid #FFF;
+    border-right: 3px solid transparent;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    padding: 40px;
+  }
+  
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+
