@@ -110,6 +110,13 @@ const Cart = () => {
         return total + price * quantity;
     }, 0);
 
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }, []);
+
     return (
         <div className="h-screen mt-10 py-2">
             <div className="container mx-auto px-4 md:px-6 lg:px-8">

@@ -65,7 +65,7 @@ const Body = ({ latitude, longitude }) => {
                     imageUrl: `${BASE_URL}${item.imageId}`,
                     description: item.description || ''
                 }));
-                console.log("cuisine",imageUrls)
+                // console.log("cuisine",imageUrls)
                 setImages(imageUrls);
 
                 const restaurantData = data?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];

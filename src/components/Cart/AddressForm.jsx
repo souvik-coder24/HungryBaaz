@@ -54,6 +54,14 @@ const AddressForm = () => {
     } else {
       setErrors(validationErrors);
     }
+
+    useEffect(() => {
+      window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+      });
+  }, []);
+
   };
 
   return (

@@ -20,7 +20,7 @@ const RestroMenu = () => {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
             const result = await response.json();
-            console.log("resInfo", result?.data?.cards[2]?.card?.card?.info || {})
+            {/*console.log("resInfo", result?.data?.cards[2]?.card?.card?.info || {})*/}
             setResInfo(result?.data?.cards[2]?.card?.card?.info || {});
             const fetchedMenuData = result?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards || [];
             setMenuData(fetchedMenuData);
