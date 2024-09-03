@@ -8,7 +8,6 @@ const Footer = () => {
     <footer className="bg-gray-100 text-black py-8 mx-auto w-[81%] rounded-xl shadow-lg">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row md:justify-between">
-          {/* Logo and Branding */}
           <div className="mb-6 md:mb-0">
             <Link to="/">
               <img src={logo} alt="Logo" className="w-46 mb-2" />
@@ -16,7 +15,6 @@ const Footer = () => {
             <p className="text-gray-700">Delivering your favorite food with a smile.</p>
           </div>
 
-          {/* Navigation Links */}
           <div className="flex flex-col md:flex-row md:gap-8 mb-6 md:mb-0">
             <div className="flex flex-col">
               <h5 className="text-lg font-semibold mb-2">Company</h5>
@@ -33,7 +31,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Social Media Icons */}
           <div className="flex space-x-4 mb-6 md:mb-0">
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-black">
               <FaFacebookF size={20} />
@@ -50,7 +47,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Newsletter Signup */}
         <div className="mt-8 mx-auto text-center">
           <h5 className="text-lg font-semibold mb-4">Subscribe to our Newsletter</h5>
           <form className="flex justify-center">
@@ -69,7 +65,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Legal Information */}
       <div className="border-t border-gray-400 mt-8 pt-4 text-center text-gray-600">
         <p>&copy; {new Date().getFullYear()} HungryBaaz. All rights reserved.</p>
       </div>

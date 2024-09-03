@@ -25,6 +25,7 @@ const Cuisine = () => {
     const { description } = useParams();
     const [restaurants, setRestaurants] = useState([]);
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+    const [visibleCount, setVisibleCount] = useState(16);
     const [loading, setLoading] = useState(true);
     const [activeBtn, setActiveBtn] = useState(null);
     const dispatch = useDispatch();
@@ -103,65 +104,58 @@ const Cuisine = () => {
         });
     }, []);
 
+    const handleLoadMore = () => {
+        setVisibleCount(prevCount => prevCount + 16);
+    };
+
+    const visibleRestaurants = filteredRestaurants.slice(0, visibleCount);
+
     return (
-        <div className='w-[80%] mt-16 ml-[200px]'>
+        <div className='w-full max-w-screen-xl mx-auto mt-16 px-4'>
             {loading ? (
                 <ShimmerSimpleGallery card imageHeight={200} col={4} caption />
             ) : (
                 <>
-                    <h1 className='text-2xl font-bold mb-4'>
-                        Restaurants related to <span className='text-blue-600 text-3xl'>{description || 'Cuisine'}</span> Cuisine
+                    <h1 className='text-2xl sm:text-3xl md:text-4xl font-bold mb-4'>
+                        Restaurants related to <span className='text-blue-600'>{description || 'Cuisine'}</span> Cuisine
                     </h1>
-                    <div className="my-7 flex gap-3">
-                        {
-                            filterBtn.map((btn) => (
-                                <button
-                                    key={btn.filtername}
-                                    onClick={() => handleFilterBtn(btn.filtername)}
-                                    className={`filterBtn flex gap-2 items-center ${activeBtn === btn.filtername ? "active" : ""}`}
-                                >
-                                    <p>{btn.filtername}</p>
-                                    {activeBtn === btn.filtername && <IoClose className='close-icon mt-1' />}
-                                </button>
-                            ))
-                        }
+                    <div className="my-7 flex flex-wrap gap-3">
+                    {filterBtn.map((btn) => (
+                        <button
+                            key={btn.filtername}
+                            onClick={() => handleFilterBtn(btn.filtername)}
+                            className={`filterBtn flex gap-2 items-center ${activeBtn === btn.filtername ? "active" : ""}`}
+                        >
+                            <p className='text-sm md:text-base'>{btn.filtername}</p>
+                            {activeBtn === btn.filtername && <IoClose className='close-icon text-xl' />}
+                        </button>
+                    ))}
                     </div>
                     <div className="mb-2"><hr className="border-t-2 border-gray-300" /></div>
 
-                    {filteredRestaurants.length > 0 ? (
+                    {visibleRestaurants.length > 0 ? (
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                            {filteredRestaurants.map((item, index) => {
+                            {visibleRestaurants.map((item, index) => {
                                 const itemInfo = item?.card?.card?.info || {};
-                                const { id, name, avgRating, sla, costForTwoMessage, areaName, slugs, cloudinaryImageId, aggregatedDiscountInfoV2, aggregatedDiscountInfoV3 } = itemInfo;
+                                const { id, name, avgRating, sla, costForTwoMessage, areaName, slugs, cloudinaryImageId } = itemInfo;
                                 const city = slugs?.city || '';
-                                const discountHeader = aggregatedDiscountInfoV3?.header || (aggregatedDiscountInfoV2?.header?.includes("New on HungryBaaz") ? "New on HungryBaaz" : "");
-                                const discountSubHeader = aggregatedDiscountInfoV3?.subHeader || '';
-
                                 return (
-                                    <Link key={id} to={`/res/${id}`}>
-                                        <div className="mt-2 px-2 relative transition-transform duration-500 ease-in-out transform hover:scale-95 cursor-pointer">
-                                            <div className="bg-white p-1 rounded-lg overflow-hidden min-w-[295px] h-[182px] relative">
-                                                <img
-                                                    src={`${BASE_URL}${cloudinaryImageId || DEFAULT_IMAGE}`}
-                                                    alt={`Image ${index}`}
-                                                    loading="lazy"
-                                                    className="w-full h-full object-cover rounded-lg"
-                                                />
-                                                <div className="absolute bottom-0 left-1 w-[97.5%] p-2 bg-gradient-to-t from-black to-transparent text-white rounded-b-lg">
-                                                    <div className="flex items-start">
-                                                        <p className='text-2xl font-bold'>{discountHeader}</p>
-                                                        <p className='text-2xl font-bold'>{discountSubHeader}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className='ml-1 mt-3'>
-                                                <h2 className='text-2xl font-bold'>{name}</h2>
-                                                <p className='text-sm flex items-center gap-1'>
+                                    <Link key={id} to={`/res/${id}`} className="block relative transition-transform duration-300 hover:scale-105">
+                                        <div className="bg-white p-2 rounded-lg overflow-hidden shadow-md">
+                                            <img
+                                                src={`${BASE_URL}${cloudinaryImageId || DEFAULT_IMAGE}`}
+                                                alt={`Image ${index}`}
+                                                loading="lazy"
+                                                className="w-full h-40 sm:h-48 md:h-52 object-cover rounded-md"
+                                            />
+                                            <div className="p-2">
+                                                <h2 className='text-lg sm:text-xl md:text-2xl font-semibold'>{name}</h2>
+                                                <p className='text-sm sm:text-base flex items-center gap-1 font-bold'>
                                                     <MdStars className='text-lg text-blue-600' />
-                                                    {avgRating} <span className='font-semibold'>{sla?.slaString}</span>
+                                                    {avgRating} <span>{sla?.slaString}</span>
                                                 </p>
-                                                <p className='text-md font-semibold text-gray-600'>{costForTwoMessage}</p>
-                                                <p className='text-md font-semibold text-gray-600'>{areaName}, {city}</p>
+                                                <p className='text-sm sm:text-base text-gray-600 font-medium'>{costForTwoMessage}</p>
+                                                <p className='text-sm sm:text-base text-gray-600'>{areaName}, {city}</p>
                                             </div>
                                         </div>
                                     </Link>
@@ -170,6 +164,17 @@ const Cuisine = () => {
                         </div>
                     ) : (
                         <p>No restaurants found.</p>
+                    )}
+
+                    {filteredRestaurants.length > visibleCount && (
+                        <div className="flex justify-center mt-4">
+                            <button
+                                onClick={handleLoadMore}
+                                className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300"
+                            >
+                                Load More
+                            </button>
+                        </div>
                     )}
                 </>
             )}

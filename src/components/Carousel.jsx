@@ -34,6 +34,29 @@ const Carousel = ({ images }) => {
         centerPadding: '0',
         swipeToSlide: true,
         focusOnSelect: true,
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 3,
+                    arrows: false,
+                }
+            },
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 5,
+                    arrows: true,
+                }
+            },
+            {
+                breakpoint: 1440,
+                settings: {
+                    slidesToShow: 6,
+                    arrows: true,
+                }
+            }
+        ]
     };
 
     const handlePrevClick = () => {
@@ -54,14 +77,13 @@ const Carousel = ({ images }) => {
                 <Slider ref={featuredSliderRef} {...featuredSettings}>
                     {featuredImages.length > 0 ? (
                         featuredImages.map(item => (
-                            <Link key={item.index} to={`/cuisine/${item.description}`}>
-                                <div className="w-full overflow-hidden rounded-lg">
+                            <Link key={item.id} to={`/cuisine/${item.description}`}>
+                                <div className="relative w-full">
                                     <img 
                                         src={item.image} 
                                         loading="lazy"
                                         alt={`Featured ${item.id}`}
-                                        style={{ width: '100%', height: '50%', objectFit: 'cover' }}
-                                        className="transition-transform rounded-2xl duration-500 ease-in-out mt-4 transform hover:scale-105 cursor-pointer"
+                                        className="w-full h-auto object-cover rounded-2xl transition-transform duration-500 ease-in-out transform hover:scale-105 cursor-pointer"
                                     />
                                 </div>
                             </Link>
@@ -72,16 +94,16 @@ const Carousel = ({ images }) => {
                 </Slider>
             </div>
 
-            <div className="mx-auto mt-11">
-                <div className='flex justify-between items-center'>
-                    <h1 className='text-2xl font-bold'>Feed Your Culinary Curiosity</h1>
+            <div className="relative mx-auto mt-11">
+                <div className='flex flex-col md:flex-row justify-between items-center'>
+                    <h1 className='text-2xl md:text-3xl font-bold mb-4 md:mb-0'>Feed Your Culinary Curiosity</h1>
                     <div className='flex gap-6'>
                         <FaArrowLeft 
-                            className='bg-gray-200 text-2xl rounded-full text-gray-700 cursor-pointer'
+                            className='hidden md:flex bg-gray-200 text-4xl rounded-full text-gray-700 cursor-pointer p-2'
                             onClick={handlePrevClick}
                         />
                         <FaArrowRight 
-                            className='bg-gray-200 text-2xl rounded-full text-gray-700 cursor-pointer'
+                            className='hidden md:flex bg-gray-200 text-4xl rounded-full text-gray-700 cursor-pointer p-2'
                             onClick={handleNextClick}
                         />
                     </div>
@@ -94,10 +116,9 @@ const Carousel = ({ images }) => {
                                 <div className="p-2 rounded-lg overflow-hidden">
                                     <img
                                         src={imageUrl.imageUrl}
-                                        alt={`Image ${index}`} 
+                                        alt={'Image'} 
                                         loading="lazy"
-                                        style={{ width: '100%', height: 'auto' }} 
-                                        className="rounded-lg transition-transform duration-500 ease-in-out transform hover:scale-125 cursor-pointer"
+                                        className="w-full h-auto rounded-lg transition-transform duration-500 ease-in-out transform hover:scale-125 cursor-pointer"
                                     />
                                 </div>
                             </Link>

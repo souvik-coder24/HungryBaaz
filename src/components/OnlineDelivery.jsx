@@ -27,64 +27,62 @@ const OnlineDelivery = ({ restaurants }) => {
     };
 
     return (
-        <>
-            <div className='mt-8'>
-                <h1 className='text-2xl font-bold'>Restaurants with online food delivery</h1>
-                <div className="my-7 flex gap-3">
-                    {
-                        filterBtn.map((btn) => (
-                            <button
-                                key={btn.filtername}
-                                onClick={() => handleFilterBtn(btn.filtername)}
-                                className={`filterBtn flex gap-2 items-center ${activeBtn === btn.filtername ? "active" : ""}`}
-                            >
-                                <p>{btn.filtername}</p>
-                                {activeBtn === btn.filtername && <IoClose className='close-icon mt-1' />}
-                            </button>
-                        ))
-                    }
-                </div>
-                <div className="grid grid-cols-4 gap-4">
-                    {restaurants.length > 0 ? (
-                        restaurants.map((item, index) => (
-                            <Link key={item.id} to={`/res/${item.id}`}>
-                                <div className="mt-2 px-2 relative transition-transform duration-500 ease-in-out transform hover:scale-95 cursor-pointer">
-                                    <div className="bg-white p-1 rounded-lg overflow-hidden min-w-[295px] h-[182px] relative">
-                                        <img
-                                            src={item.imageUrl}
-                                            alt={`Image ${index}`}
-                                            loading="lazy"
-                                            className="w-full h-full object-cover rounded-lg"
-                                        />
-                                        <div className="absolute bottom-0 left-1 w-[97.5%] p-2 bg-gradient-to-t from-black to-transparent text-white rounded-b-lg">
-                                            <div className="flex items-center">
-                                                <p className='text-2xl font-bold'>
-                                                    {item.discountHeader}
-                                                </p>
-                                                <p className='text-2xl font-bold'>
-                                                    {item.discountSubHeader}
-                                                </p>
-                                            </div>
+        <div className='mt-8 px-4'>
+            <h1 className='text-2xl md:text-3xl font-bold'>
+                Restaurants with online food delivery
+            </h1>
+            <div className="my-7 flex flex-wrap gap-3">
+                {filterBtn.map((btn) => (
+                    <button
+                        key={btn.filtername}
+                        onClick={() => handleFilterBtn(btn.filtername)}
+                        className={`filterBtn flex gap-2 items-center ${activeBtn === btn.filtername ? "active" : ""}`}
+                    >
+                        <p className='text-sm md:text-base'>{btn.filtername}</p>
+                        {activeBtn === btn.filtername && <IoClose className='close-icon text-xl' />}
+                    </button>
+                ))}
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {restaurants.length > 0 ? (
+                    restaurants.map((item, index) => (
+                        <Link key={item.id} to={`/res/${item.id}`}>
+                            <div className="relative transition-transform duration-500 ease-in-out transform hover:scale-95 cursor-pointer">
+                                <div className="bg-white p-2 rounded-lg overflow-hidden relative">
+                                    <img
+                                        src={item.imageUrl}
+                                        alt={`Image ${index}`}
+                                        loading="lazy"
+                                        className="w-full h-[200px] object-cover rounded-lg"
+                                    />
+                                    <div className="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black to-transparent text-white rounded-b-lg">
+                                        <div className="flex gap-2">
+                                            <p className='text-lg md:text-xl font-bold'>
+                                                {item.discountHeader}
+                                            </p>
+                                            <p className='text-md md:text-lg font-bold'>
+                                                {item.discountSubHeader}
+                                            </p>
                                         </div>
                                     </div>
-                                    <div className='ml-1 mt-3'>
-                                        <h2 className='text-2xl font-bold'>{item.name}</h2>
-                                        <p className='text-sm flex items-center gap-1'>
-                                            <MdStars className='text-lg text-blue-600' />
-                                            {item.rating} <span className='font-semibold'>{item.deliveryTime}</span>
-                                        </p>
-                                        <p className='text-md font-semibold text-gray-600'>{item.cuisine}</p>
-                                        <p className='text-md font-semibold text-gray-600'>{item.location}</p>
-                                    </div>
                                 </div>
-                            </Link>
-                        ))
-                    ) : (
-                        <p>No restaurants available</p>
-                    )}
-                </div>
+                                <div className='ml-2 mt-3'>
+                                    <h2 className='text-lg md:text-xl font-bold'>{item.name}</h2>
+                                    <p className='text-sm md:text-base flex items-center gap-1'>
+                                        <MdStars className='text-lg text-blue-600' />
+                                        {item.rating} <span className='font-semibold'>{item.deliveryTime}</span>
+                                    </p>
+                                    <p className='text-sm md:text-base font-semibold text-gray-600'>{item.cuisine}</p>
+                                    <p className='text-sm md:text-base font-semibold text-gray-600'>{item.location}</p>
+                                </div>
+                            </div>
+                        </Link>
+                    ))
+                ) : (
+                    <p className='text-center col-span-full'>No restaurants available</p>
+                )}
             </div>
-        </>
+        </div>
     );
 }
 

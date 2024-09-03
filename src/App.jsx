@@ -15,14 +15,17 @@ import Footer from './components/Footer/Footer'
 import Search from './components/Search';
 import Cuisine from './components/Cuisine/Cuisine';
 
-
 export default function App() {
   const [location, setLocation] = useState({ latitude: null, longitude: null });
+
+  const handleLocationUpdate = (location) => {
+    setLocation(location);
+  };
 
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <Header onLocationSelect={setLocation} />
+        <Header onLocationSelect={handleLocationUpdate} />
         <Routes>
           <Route path='/' element={<Body latitude={location.latitude} longitude={location.longitude} />} />
           <Route path='/res/:id' element={<RestroMenu />} />
@@ -33,7 +36,7 @@ export default function App() {
           <Route path='/offers' element={<Offer />} />
           <Route path='/search' element={<Search latitude={location.latitude} longitude={location.longitude}/>} />
         </Routes>
-        <div className='mt-32'>
+        <div className='mt-72'>
           <Footer/>
         </div>
       </BrowserRouter>

@@ -40,3 +40,98 @@
   }
 
 
+  /*-----------------------------------------Top Bar(Mobile & Tablet)----------------------------------------------*/
+  
+  .top-bar{
+    display: none;
+  }
+
+  @media (max-width: 810px) {
+    .top-bar {
+      display: flex;
+    }
+  }
+  
+/*-----------------------------------------Bottom Bar----------------------------------------------*/
+.bottom-bar {
+  display: none;
+  position: fixed;
+  justify-content: space-between;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  background-color: white;
+  box-shadow: 0 20px 16px rgba(0,0,0,0.1);
+  z-index: 20;
+  padding: 0 16px;
+}
+
+@media (max-width: 810px) {
+  .bottom-bar {
+      display: flex;
+  }
+}
+
+
+.bottom-bar .icon-container {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.bottom-bar .icon-container.active {
+  background-color: black;
+}
+
+.bottom-bar .icon-container:hover {
+  background-color: rgba(37, 126, 234, 0.571);
+}
+
+.bottom-bar .icon-container .text {
+  color: rgba(106, 167, 241, 0.571);
+  transition: color 0.3s ease;
+}
+
+.bottom-bar .icon-container.active .text {
+  color: rgba(245, 245, 245, 0.848);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 810px) {
+  .desktop-header {
+      display: flex;
+  }
+}
+
+.desktop-header {
+  display: none;
+}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { IoClose } from 'react-icons/io5';
+import { FaPlus } from "react-icons/fa6";
 
 const FAQItem = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,13 +17,7 @@ const FAQItem = ({ question, answer }) => {
         onClick={handleToggle}
       >
         <span className="flex-1 text-base-content">{question}</span>
-        <svg
-          className={`flex-shrink-0 w-4 h-4 ml-auto fill-current transform transition-transform duration-200 ${isOpen ? 'rotate-90' : ''}`}
-          viewBox="0 0 16 16"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect y="7" width="16" height="2" rx="1"></rect>
-        </svg>
+        <FaPlus className={`flex-shrink-0 w-4 h-4 ml-auto fill-current transform transition-transform duration-200 ${isOpen ? 'rotate-90' : ''}`}/>
       </button>
       <div
         className={`transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? 'max-h-60' : 'max-h-0'}`}
