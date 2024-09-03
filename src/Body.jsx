@@ -127,5 +127,4 @@ const Body = ({ latitude, longitude }) => {
         </div>
     );
 };
-
 export default Body;

@@ -1,0 +1,8 @@
+[build]
+  publish = "dist"
+
+[[redirects]]
+  from = "/api/*"
+  to = "https://www.swiggy.com/:splat"
+  status = 200
+  force = true
