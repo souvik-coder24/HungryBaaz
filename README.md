@@ -1,6 +1,6 @@
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
-
-<!-- # HungryBaaz -->
+# HungryBaaz
+*Delivering your favorite food with a smile.*
+***
 
 **HungryBaaz** is a modern web application designed to offer a seamless and engaging dining experience. With advanced features ranging from recipe generation to real-time data fetching and user-friendly design elements, HungryBaaz is tailored for desktop and tablet users seeking a dynamic restaurant menu experience.
 
@@ -15,17 +15,7 @@ HungryBaaz integrates various advanced features to enhance user interaction with
 
 ## Features
 
-### Recipe Generator
-
-- **Feature**: Generate recipes on-demand with the click of a button using Gemini.
-- **How to Access**: Click the **Get Recipe** button on the restaurant menu.
-- **Additional Feature**: Copy the generated recipe to your clipboard.
-- **Screenshot**:
-
-  ![Recipe Generator](assets/images/recipe-generator.png)
-  *Generate recipes easily with the Get Recipe button. Copy function included.*
-
-### Impressive Design
+### 1. Impressive Design
 
 - **Feature**: Modern, visually appealing design to enhance user experience.
 - **Screenshot**:
@@ -33,59 +23,77 @@ HungryBaaz integrates various advanced features to enhance user interaction with
   ![Impressive Design](src/assets/images/design.png)
   *The clean and elegant design of HungryBaaz.*
 
-### User Authentication
+### 2. User Authentication
 
 - **Feature**: Secure login and registration system with Google integration.
 - **Details**: After logging in with Google, the user's profile image replaces the default user icon. Clicking the icon opens a logout option.
 - **Screenshot**:
 
-  ![User Authentication](assets/images/user-authentication.png)
+  ![User Authentication](src/assets/images/login.png)
+  *Google login and manual login also user can create account by clicking the register and fill the register form for further login.*
+
+  ![User Authentication](src/assets/images/logout.png)
   *Google login and user profile image integration.*
 
-### Real-Time Data Fetching
-
-- **Feature**: Fetch real-time data from the Swiggy API to provide up-to-date menu information.
-- **How to Access**: Data is automatically updated in the menu interface.
-- **Screenshot**:
-
-  ![Real-Time Data Fetching](assets/images/real-time-data.png)
-  *Live updates from Swiggy API.*
-
-### Location Change and Recent Searches
+### 3. Location Change and Recent Searches
 
 - **Feature**: Change location across India and view recent searches in the sidebar.
 - **How to Access**: Click on the location change option in the header to open the sidebar, which shows recent searches (up to 3).
 - **Screenshot**:
 
-  ![Location and Recent Searches](assets/images/location-recent-searches.png)
+  ![Location and Recent Searches](src/assets/images/location-1.png)
+  ![Location and Recent Searches](src/assets/images/location-2.png)
   *Change location and view recent searches.*
 
-### Search and Filter Functionality
+### 4. Cuisine
+
+- **Feature**: Discover and explore various cuisines available in the menu.
+- **Details**: View different types of cuisine and their respective dishes.
+- **Screenshot**:
+
+  ![Cuisine](src/assets/images/cuisine.png)
+  *Explore diverse cuisines available in the menu.*
+
+### 5. Search and Filter Functionality
 
 - **Feature**: Search and filter menu items based on important criteria.
 - **How to Access**: Use the search bar and filter options on the menu page.
 - **Screenshot**:
 
-  ![Search and Filter](assets/images/search-filter.png)
+  ![Search and Filter](src/assets/images/restro.png)
+  ![Search and Filter](src/assets/images/dishes.png)
   *Search and filter options for a tailored menu experience.*
 
-### Add-ons and Cart Functionality
+### 6. Real-Time Data Fetching
 
-- **Feature**: Add or remove add-ons for menu items, manage cart items, and enforce checkout requirements.
-- **Details**: Users can only proceed to checkout if logged in and have added an address. Icons in the cart can be removed.
+- **Feature**: Fetch real-time data from the Swiggy API to provide up-to-date menu information.
+- **How to Access**: Data is automatically updated in the menu interface.
 - **Screenshot**:
 
-  ![Add-ons and Cart](assets/images/add-ons-cart.png)
+  ![Real-Time Data Fetching](src/assets/images/menu.png)
+  *Live updates from Swiggy API.*
+
+### 7. Add-ons and Cart Functionality
+
+- **Feature**: Add or remove add-ons for menu items, manage cart items, and enforce checkout requirements.
+- **Details**: Users can only proceed to checkout if logged in and have added an address. items in the cart can be removed.
+- **Screenshot**:
+
+  ![Add-ons and Cart](src/assets/images/addons.png)
+  ![Add-ons and Cart](src/assets/images/cart.png)
   *Manage add-ons and cart items efficiently.*
 
-### Responsive Design
+### 8. Responsive Design
 
 - **Feature**: Fully responsive design for desktop and tablets.
 - **Note**: The design is optimized for desktop and tablet devices; mobile screen support is limited due to API constraints.
 - **Screenshot**:
+  ![Responsive Design](src/assets/images/location-1.png)
+  *Responsive design for desktop.*
 
-  ![Responsive Design](assets/images/responsive-design.png)
-  *Responsive design for desktop and tablets.*
+  ![Responsive Design](src/assets/images/design.png)
+  *Responsive design for tablets.*
+
 
 ## Installation
 
@@ -135,5 +143,56 @@ We welcome contributions to HungryBaaz. To contribute:
    git push origin feature/your-feature-name
 
 6. **Open a pull request on GitHub with a detailed description of your changes.**
+
+
+
+
+## Problems Faced
+### Limited Mobile Support
+
+- **Issue**: The application is primarily optimized for desktop and tablet devices, with limited support for mobile screens due to API constraints.
+- **Solution**: Focused development on desktop and tablet views, considering mobile support as a future enhancement.
+
+### Real-Time Data Integration
+
+- **Issue**: Ensuring real-time data fetching and integration from the Swiggy API was challenging. The actual API endpoints were not publicly available, necessitating the use of a proxy for data fetching.
+- **Solution**: Implemented a proxy to facilitate data fetching. Focused on optimizing API calls and handling responses efficiently.
+
+### User Authentication Handling
+
+- **Issue**: Managing user authentication with Google and email/password required careful handling of authentication states.
+- **Solution**: Utilized Firebase authentication services and Redux for state management to ensure a smooth user experience.
+
+### Multiple API Integration
+
+- **Issue**: Integrating with multiple APIs posed a significant challenge as finding the correct API endpoints took a lot of time due to their non-public availability.
+- **Solution**: Invested significant time in researching and testing various APIs to identify the correct ones, utilizing proxies where necessary to bridge gaps.
+
+## Future Plans
+
+### Mobile Support
+
+- **Plan**: Expand support to mobile screens, ensuring a responsive design that works seamlessly across all device sizes.
+
+### Payment Integration
+
+- **Plan**: Integrate payment processing with Razorpay to facilitate secure and efficient transactions.
+
+### Chat Bot
+
+- **Plan**: Add a chat bot to assist users with their queries and provide real-time support.
+
+### Live Location Tracking
+
+- **Plan**: Implement functionality to track and display the user's live location for a more personalized experience.
+
+### Enhanced Design
+
+- **Plan**: Continue to improve the visual design of the application, aiming for a more beautiful and intuitive user interface.
+
+### Food Making Process Visualization
+
+- **Plan**: Add a feature to show the food-making process with a progress bar and animations. While animations are not implemented yet, future plans include using GSAP for enhanced visual effects.
+
 
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { IoClose } from "react-icons/io5";
+import { CiUser } from "react-icons/ci";
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleSignInSidebar } from '../../store/cartSlice';
 import { signInWithPopup, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
@@ -81,16 +82,18 @@ const LoginSignUpSidebar = () => {
         <>
             <div className={`fixed inset-0 bg-black/60 z-30 transition-opacity duration-300 ${isSignInSidebarVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} />
             <div className={`fixed top-0 right-0 h-full bg-white z-50 transition-transform duration-300 ${isSignInSidebarVisible ? 'translate-x-0' : 'translate-x-full'} 
-                w-full md:w-4/5 lg:w-3/5 xl:w-1/3`} // Responsive width adjustments
+                w-full sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/4`}
             >
                 <IoClose className='text-2xl absolute top-4 right-4 cursor-pointer' onClick={() => dispatch(toggleSignInSidebar())} />
                 <div className='p-4 mt-16'>
                     <h2 className='text-2xl font-bold mb-4'>{isSignUp ? 'Register' : 'Log-In'}</h2>
                     <div className='flex flex-col items-center gap-4 mb-6'>
                         {userData && userData.photo ? (
-                            <img src={userData.photo} alt={userData.name} className="w-16 h-16 rounded-full" /> // Adjust size for better visibility
+                            <img src={userData.photo} alt={userData.name} className="w-16 h-16 rounded-full" />
                         ) : (
-                            <div className="text-gray-500 text-xl">User Icon</div>
+                            <div className="text-gray-500 text-6xl">
+                                <CiUser/>
+                            </div>
                         )}
                         <div className='w-full max-w-sm'>
                             <p className="text-lg text-center font-bold mb-2">{userData ? userData.name : 'Guest'}</p>

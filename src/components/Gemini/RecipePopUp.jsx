@@ -14,7 +14,7 @@ const RecipePopUp = ({ isOpen, onClose, result }) => {
             setLoading(true);
             const timer = setTimeout(() => {
                 setLoading(false);
-            }, 6000);
+            }, 8000);
             return () => clearTimeout(timer);
         }
     }, [isOpen]);
