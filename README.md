@@ -30,7 +30,7 @@ HungryBaaz integrates various advanced features to enhance user interaction with
 - **Feature**: Modern, visually appealing design to enhance user experience.
 - **Screenshot**:
 
-  ![Impressive Design](assets/images/design.png)
+  ![Impressive Design](src/assets/images/design.png)
   *The clean and elegant design of HungryBaaz.*
 
 ### User Authentication
