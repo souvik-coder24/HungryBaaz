@@ -145,7 +145,7 @@ const Cart = () => {
                                                         />
                                                         <div className="flex flex-col">
                                                             <span className="font-semibold text-sm md:text-base">{item.name}</span>
-                                                            <span className="text-xs md:text-sm text-gray-400 truncate max-w-[200px]">{item.description}</span>
+                                                            <span className="text-xs md:text-sm text-gray-400 truncate max-w-[100px]">{item.description}</span>
                                                             {item.addons && item.addons.length > 0 && (
                                                                 <div className="mt-2">
                                                                     {item.addons.map((group, groupIndex) => (

@@ -14,6 +14,7 @@ import SearchSidebar from './SearchSidebar';
 const Header = ({ onLocationSelect }) => {
     const dispatch = useDispatch();
     const userData = useSelector((state) => state.authSlice.userData);
+    const cartInfo = useSelector((state) => state.cart.cartInfo);
     const [headerText, setHeaderText] = useState('Other');
     const [headerSubText, setHeaderSubText] = useState('');
     const [isSearchSidebarVisible, setIsSearchSidebarVisible] = useState(false);
@@ -92,6 +93,11 @@ const Header = ({ onLocationSelect }) => {
                                         {item.image}
                                     </div>
                                     <p className="text-lg font-normal text-gray-500 group-hover:text-[#00B7EB] transition-colors">{item.name}</p>
+                                    {item.name === "Cart" && cartInfo.length > 0 && (
+                                        <span className="absolute bottom-3 left-3 bg-blue-600 text-white text-xs font-bold rounded-full px-1 py-0.5">
+                                            {cartInfo.length}
+                                        </span>
+                                    )}
                                 </div>
                             </Link>
                         ))}
@@ -111,9 +117,9 @@ const Header = ({ onLocationSelect }) => {
                         </div>
                     </div>
                 </div>
+
             {/* Top Header for Mobile and Tablet */}
-            <div className=' top-bar fixed top-0 left-0 w-full h-16 bg-white shadow-lg justify-between items-center z-20 px-4'
-            top>
+            <div className=' top-bar fixed top-0 left-0 w-full h-16 bg-white shadow-lg justify-between items-center z-20 px-4'>
                 <Link to='/'>
                     <img className='w-16 transition-transform duration-300 ease-in-out transform hover:scale-95 cursor-pointer' src={Logo} alt="logo" />
                 </Link>
@@ -137,20 +143,24 @@ const Header = ({ onLocationSelect }) => {
                 </div>
             </div> 
 
-
-        {/*Bottom Navbar*/}
-        <div className='bottom-bar'>
-            {navItems.map((item, index) => (
-                <Link to={item.path} key={index}>
-                    <div className={`icon-container mt-3 ${activeIndex === index ? 'active' : ''}`}
-                        onClick={() => handleClick(index)}>
-                        <div className="text transition-colors">
-                            {item.image}
+            {/* Bottom Navbar */}
+            <div className='bottom-bar'>
+                {navItems.map((item, index) => (
+                    <Link to={item.path} key={index}>
+                        <div className={`icon-container mt-3 ${activeIndex === index ? 'active' : ''}`}
+                            onClick={() => handleClick(index)}>
+                            <div className="text transition-colors">
+                                {item.image}
+                                {item.name === "Cart" && cartInfo.length > 0 && (
+                                    <span className="absolute bottom-3 left-3 bg-blue-600 text-white text-xs font-bold rounded-full px-1 py-0.5">
+                                        {cartInfo.length}
+                                    </span>
+                                )}
+                            </div>
                         </div>
-                    </div>
-                </Link>
-            ))}
-        </div>
+                    </Link>
+                ))}
+            </div>
 
             {/* Content */}
             <div className="pt-5">
