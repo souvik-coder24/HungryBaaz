@@ -66,7 +66,7 @@ const Footer = () => {
       </div>
 
       <div className="border-t border-gray-400 mt-8 pt-4 text-center text-gray-600">
-        <p>&copy; {new Date().getFullYear()} HungryBaaz. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} HungryBaaz By Souvik Das. All rights reserved.</p>
       </div>
     </footer>
   );
