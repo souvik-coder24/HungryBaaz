@@ -63,9 +63,9 @@ const Body = ({ latitude, longitude }) => {
                 const imageInfo = data?.data?.cards?.[0]?.card?.card?.imageGridCards?.info || [];
                 const imageUrls = imageInfo.map(item => ({
                     imageUrl: `${BASE_URL}${item.imageId}`,
-                    description: item.description || ''
+                    description: item.accessibility.altText || ''
                 }));
-                // console.log("cuisine",imageUrls)
+                // console.log("cuisine",data?.data?.cards?.[0]?.card?.card?.imageGridCards?.info)
                 setImages(imageUrls);
 
                 const restaurantData = data?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];

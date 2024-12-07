@@ -117,7 +117,7 @@ const Cuisine = () => {
             ) : (
                 <>
                     <h1 className='text-2xl sm:text-3xl md:text-4xl font-bold mb-4'>
-                        Restaurants related to <span className='text-blue-600'>{description || 'Cuisine'}</span> Cuisine
+                        Resturants related to <span className='text-blue-600'>{description || 'Cuisine'}</span>
                     </h1>
                     <div className="my-7 flex flex-wrap gap-3">
                     {filterBtn.map((btn) => (
